@@ -9,8 +9,8 @@ import (
 )
 
 func printTaskList(taskItems []string) {
-	for idx,task := range taskItems {
-		fmt.Printf("%d. %s\n",idx+1,task)	
+	for idx, task := range taskItems {
+		fmt.Printf("%d. %s\n", idx+1, task)
 	}
 }
 
@@ -45,7 +45,7 @@ func getUserInputMultipleWords() string {
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
 	var greeting = "Hello user. Welcome to our TodoList App!"
-	fmt.Fprintf(w,greeting)
+	fmt.Fprintf(w, greeting)
 }
 
 func tasksHandler(w http.ResponseWriter, r *http.Request) {
@@ -55,8 +55,8 @@ func tasksHandler(w http.ResponseWriter, r *http.Request) {
 		"Learn new technologies daily to improve your skills!",
 	}
 
-	for idx,task := range taskItems {
-		fmt.Fprintf(w,"%d. %s\n",idx+1,task)
+	for idx, task := range taskItems {
+		fmt.Fprintf(w, "%d. %s\n", idx+1, task)
 	}
 }
 
@@ -73,7 +73,7 @@ func main() {
 
 	// Example of taking user input to add a new task
 	fmt.Println("\n--- User Input Examples ---")
-	
+
 	// Example 1: Simple input using bufio.Scanner
 	userTask := getUserInput()
 	if userTask != "" {
@@ -100,8 +100,8 @@ func main() {
 	printTaskList(taskItems)
 
 	fmt.Println("\nStarting web server on :8080...")
-	http.HandleFunc("/",helloHandler) 
-	http.HandleFunc("/tasks",tasksHandler)
+	http.HandleFunc("/", helloHandler)
+	http.HandleFunc("/tasks", tasksHandler)
 
-	http.ListenAndServe(":8080",nil)
+	http.ListenAndServe(":8080", nil)
 }
